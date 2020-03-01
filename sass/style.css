@@ -69,6 +69,15 @@ header .square {
 
 .detail .desc p:first-child {
   margin-bottom: 2rem;
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+  overflow: hidden;
+  max-height: 210px;
+}
+
+.detail .desc p {
+  word-wrap: break-word;
 }
 
 .detail .desc i {
@@ -161,7 +170,7 @@ aside .list li:first-child {
 
 aside .list .input-stack {
   position: relative;
-  color: #8298a0;
+  color: white;
   border: 1px solid black;
   display: inline-block;
   margin-bottom: 1rem;
@@ -194,11 +203,19 @@ aside .list > li:not(:first-child).active .location-name {
   color: #7db62c;
 }
 
+aside .list > li:not(:first-child).active .landmark {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
 aside .list > li:not(:first-child) .location-name {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 12px;
+  margin: 12px 0;
   color: white;
   cursor: pointer;
 }
@@ -225,6 +242,12 @@ aside .list .landmark {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  display: none;
+  -webkit-transform: translateY(-200px);
+          transform: translateY(-200px);
+  transition: all 1s;
 }
 
 aside .list .landmark span {
@@ -284,6 +307,7 @@ body {
   color: white;
   position: absolute;
   padding: 10px;
+  width: 160px;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;

@@ -37,14 +37,14 @@
    </nav>
 
    <aside>
-      <ul class="list">
-         <li>
+      <ul class="list" id="location-list">
+         <li class="active">
             <div class="input-stack">
                <input type="text" class="input" placeholder="Filter by favorite">
                <i class="material-icons icon">arrow_drop_down</i>
             </div>
          </li>
-         <li class="active">
+         <!-- <li class="active">
             <div class="location-name">
                <span>place name</span>
                <i class="material-icons white-text">arrow_drop_down</i>
@@ -54,13 +54,13 @@
                <span>place name</span>
                <span>place name</span>
             </div>
-         </li>
+         </li> -->
       </ul>
    </aside>
 
    <div id="mapid"></div>
 
-   <section class="detail ">
+   <section class="detail hide" id="detail">
       <img src="https://cdn2.tstatic.net/tribunnews/foto/bank/images/stopover-222.jpg" alt="">
       <h6 id="detail-place-name">Singapore</h6>
       <div id="detail-place-desc" class="desc">

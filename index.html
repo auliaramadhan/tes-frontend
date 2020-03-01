@@ -12,23 +12,22 @@
       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
       crossorigin=""></script>
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" href="/css/materialize.min.css">
-   
-   <link rel="stylesheet" href="/css/style.min.css">
+   <link rel="stylesheet" href="css/materialize.min.css">
+   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css'>
+   <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
    <header>
-      <div>
-         <h4>Top Rated Tourist Attractions In Singapore</h4>
-         <a href="#"><i class="material-icons">settings</i></a>
-         <a href="#"><i class="material-icons">help</i></a>
-         <a href="#" class='btn-floating grey'><i class="material-icons circle">close</i></a>
-      </div>
+      <h5>Top Rated Tourist Attractions In Singapore</h5>
+      <a href="#" class="ml-auto"><i class="material-icons grey-text text-darken-2">settings</i></a>
+      <a href="#"><i class="material-icons grey-text text-darken-2">help</i></a>
+      <a href="#"><i class="material-icons grey darken-2 circle white-text">close</i></a>
+
    </header>
-   <nav class="sidenav grey darken-2">
-      <ul>
-         <li><a href="#"><i class="material-icons medium">open_in_browser</i><span class="title"></span></a></li>
+   <nav class="sidenav">
+      <ul class="nav-list">
+         <li><a href="#"><i class="fi fi-earth"></i><span class="title">Browse</span></a></li>
          <li><a href="#"><i class="material-icons medium">ondemand_video</i><span class="title">Suggest Attraction</span></a></li>
          <li><a href="#"><i class="material-icons medium">ondemand_video</i><span class="title">videos</span></a></li>
          <li><a href="#"><i class="material-icons medium">event_note</i><span class="title">Blog</span></a></li>
@@ -37,47 +36,44 @@
    </nav>
 
    <aside>
-      <ul>
-         <div class="input-field">
-            <i class="material-icons prefix">arrow_drop_down</i>
-            <input id="icon_prefix" type="text" class="validate">
-            <label for="icon_prefix">First Name</label>
-          </div>
+      <ul class="list">
          <li>
-            <div>place name</div>
-            <div>
-               <li>landmark</li>
+            <div class="input-field">
+               <input id="icon_prefix" type="text" class="validate">
+               <label for="icon_prefix">First Name</label>
+               <i class="material-icons prefix">arrow_drop_down</i>
+            </div>
+         </li>
+         <li>
+            <span>place name <i class="material-icons prefix">arrow_drop_down</i> </span>
+            <div class="landmark">
+               <span>place name</span>
+               <span>place name</span>
+               <span>place name</span>
             </div>
          </li>
       </ul>
    </aside>
 
-   <section>
-      <h1>My Google Map</h1>
-      <div id="mapid"></div>
-   </section>
-      
-   <section>
+   <div id="mapid"></div>
+
+   <section class="detail ">
       <img src="https://cdn2.tstatic.net/tribunnews/foto/bank/images/stopover-222.jpg" alt="">
-      <div>
-         <h3>Singapore</h3>
-         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id et excepturi tempora consectetur perspiciatis, recusandae voluptate quaerat. Deserunt alias odit nesciunt culpa. Voluptatibus, iste. Labore odio ratione earum amet sapiente!</p>
-         <span><i class="material-icons light-blue-text">location_on</i> jl jambu</span>
-         <span><i class="material-icons green-text">link</i> www.aul.com</span>
+      <h6>Singapore</h6>
+      <div class="desc">
+         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id et excepturi tempora consectetur
+            perspiciatis,
+            recusandae voluptate quaerat. Deserunt alias odit nesciunt culpa. Voluptatibus, iste. Labore odio ratione
+            earum amet sapiente!</p>
+         <div><i class="material-icons light-blue-text">location_on</i> jl jambu</div>
+         <div><i class="material-icons green-text">link</i> www.aul.com</div>
       </div>
    </section>
 
 
 
-   <script type="text/javascript" src="/materialize/js/bin/materialize.min.js"></script>
-   <script type="text/javascript" src="/js/index.js"></script>
-   <script>
-      document.addEventListener('DOMContentLoaded', function () {
-         var elems = document.querySelectorAll('.sidenav');
-         var instances = M.Sidenav.init(elems, null);
-      });
-
-   </script>
+   <script type="text/javascript" src="materialize/js/bin/materialize.min.js"></script>
+   <script type="text/javascript" src="js/index.js"></script>
 </body>
 
 

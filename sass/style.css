@@ -254,4 +254,44 @@ body {
   -ms-grid-column: 3;
   grid-area: map;
 }
+
+.marker-pin {
+  width: 60px;
+  height: 60px;
+  border-radius: 50% 50% 50% 0;
+  background: #f00;
+  position: absolute;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  left: 50%;
+  top: 50%;
+  margin: -25px 0 0 -25px;
+}
+
+.marker-pin::after {
+  content: '';
+  width: 48px;
+  height: 48px;
+  margin: 6px 0 0 6px;
+  background: #ff6666;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.custom-div-icon span {
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  position: absolute;
+  padding: 10px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: 42px;
+  left: 0;
+  right: 0;
+  border-radius: 21px 0 0 21px;
+  margin-top: 6px;
+  background-color: #282c37;
+}
 /*# sourceMappingURL=style.css.map */

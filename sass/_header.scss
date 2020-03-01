@@ -1,0 +1,27 @@
+header {
+   grid-area: header;
+   display: flex;
+   // align-content: center;
+   align-items: baseline;
+   flex-wrap: wrap;
+   padding: 1rem;
+
+   h6 {
+      font-weight: bold;
+      margin: 0;
+      padding-left: 2rem;
+   }
+
+   a {
+      color: $primary-color;
+      margin: 0.5rem;
+      padding: 0;
+      .tiny{
+         font-size: 21px;
+      }
+   }
+
+   .square {
+      border-radius: 50%;
+   }
+}

@@ -1,0 +1,41 @@
+nav {
+   &.sidenav {
+      background: $sidebar-color;
+      grid-area: sidebar;
+   }
+
+   .nav-list {
+      display: flex;
+      flex-flow: column wrap;
+
+      li {
+         padding-top: 1.5rem;
+         padding-bottom: 1.5rem;
+
+         &.active {
+            background: $secondary-color;
+            color: white;
+         }
+
+         a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-decoration: none;
+            color: $font-color;
+
+            i {
+               font-size: 36px;
+            }
+
+            .title {
+               font-size: 12px;
+               text-align: center;
+            }
+
+         }
+      }
+   }
+
+}

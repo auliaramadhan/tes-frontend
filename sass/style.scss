@@ -4,100 +4,76 @@ $sidebar-color : #313541;
 $font-color: #8298a0;
 $font-color-active: #7db62c;
 
-@import 'header';
-@import 'detail';
-@import 'sidebar';
-@import 'location';
-
-
-html {
-   line-height: 1.2;
-}
-
-body {
-   display: grid;
-   grid-template-columns: 6.5rem 15rem 1fr;
-   grid-template-rows: 5rem 1fr;
-   grid-template-areas:
-      "sidebar aside header"
-      "sidebar aside map"
-   ;
-   height: 100vh;
-   width: 100%;
-}
-
-
-// map only
-
-#mapid {
-   // height: 100%;
-   // width: 100%;
-   z-index: 10;
-   grid-area: map;
-
-}
-
-// from js fidlle modify by making it bigger
-.marker-pin {
-   width: 60px;
-   height: 60px;
-   border-radius: 50% 50% 50% 0;
-   background: #f00;
-   position: absolute;
-   transform: rotate(-45deg);
-   left: 50%;
-   top: 50%;
-   margin: -25px 0 0 -25px;
-
-   &::after {
-      content: '';
-      width: 48px;
-      height: 48px;
-      margin: 6px 0 0 6px;
-      background: lighten($color: #f00, $amount: 20%);
-      position: absolute;
-      border-radius: 50%;
-   }
-}
-
-.custom-div-icon {
-   &.active {
-      // animation: scalePin 1s 1 0s linear;
-      
-      // .marker-pin{
-      //    transform: scale(2) rotate(-45deg);
-      // }
-      // span{
-      //    transform: scale(2);
-      // }
-
-   }
-
-   span {
-      font-size: 16px;
-      font-weight: 700;
-      color: white;
-      position: absolute;
-      padding: 10px;
-      width: 160px;
-      width:max-content;
-      height: 42px;
-      left: 0;
-      right: 0;
-      border-radius: 21px 0 0 21px;
-      margin-top: 6px;
-      // margin: 20px auto;
-      // text-align: center;
-      background-color: $primary-color;
-   }
-}
-
-// @keyframes scalePin {
-//    0% {
-//       transform: scale(1);
-//    }
-
-//    100% {
-//       transform: scale(2);
-//    }
+// html {
+//    line-height: 1.2;
 // }
+
+.title {
+   margin: 3rem 0;
+   text-align: center;
+}
+
+.form-group {
+   margin: 0 2rem;
+   display: flex;
+   align-items: baseline;
+
+   .input-field {
+      flex: 1 0 10rem;
+
+      input {
+         padding: 0 0 0 1rem;
+      }
+   }
+
+   button {
+      margin-left: 1rem;
+   }
+}
+
+.list-todo {
+   border-width: 0;
+
+   .collection-item {
+      display: flex;
+      align-content: center;
+      align-items: baseline;
+
+      &>span:nth-child(1) {
+         flex: 0 0 1rem;
+         text-align: center;
+      }
+
+      &>span:nth-child(2) {
+         flex: 0 0 auto;
+         margin: 0 1rem;
+      }
+
+      &>span:nth-child(3) {
+         flex: 1 1 2rem;
+         margin: 0 1rem;
+      }
+
+      &>span:nth-child(4) {
+         flex: 0 1 3rem;
+      }
+
+      .btn {
+         span {
+            width: 0px;
+            display: inline-block;
+            transform: scale(0);
+            transition: all .5s !important;
+         }
+         
+         &:hover {
+            span{
+               width: auto;
+               transform: scale(1);
+               transition: all .5s !important;
+            }
+         }
+      }
+   }
+
+}

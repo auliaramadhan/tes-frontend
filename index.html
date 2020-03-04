@@ -2,83 +2,71 @@
 <html lang="en">
 
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Front End Test</title>
-   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin="" />
-   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-      crossorigin=""></script>
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <link rel="stylesheet" href="css/materialize.min.css">
-   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css'>
-   <link rel="stylesheet" href="css/style.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front End Test</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/materialize.min.css">
+    <script src="materialize/js/bin/materialize.min.js"></script> -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.min.css">
 </head>
 
 <body>
-   <header>
-      <h6>Top Rated Tourist Attractions In Singapore</h6>
-      <a href="#" class="ml-auto"><i class="material-icons grey-text text-darken-2">settings</i></a>
-      <a href="#"><i class="material-icons grey-text text-darken-2">help</i></a>
-      <a href="#"><i class="tiny material-icons grey darken-2 circle white-text">close</i></a>
 
-   </header>
-   <nav class="sidenav">
-      <ul class="nav-list">
-         <li class="active"><a href="#"><i class="fi fi-earth"></i><span class="title">Browse</span></a></li>
-         <li><a href="#"> <img src="img/iconsinga.PNG" alt="icon" width="36" height="36"> <span class="title">Suggest
-                  Attraction</span></a></li>
-         <li><a href="#"><i class="material-icons medium">ondemand_video</i><span class="title">videos</span></a></li>
-         <li><a href="#"><i class="material-icons medium">event_note</i><span class="title">Blog</span></a></li>
-         <li><a href="#"><i class="material-icons medium">info</i><span class="title">About</span></a></li>
-      </ul>
-   </nav>
+    <div id="app" class="container">
 
-   <aside>
-      <ul class="list" id="location-list">
-         <li class="active">
-            <div class="input-stack">
-               <input type="text" class="input" placeholder="Filter by favorite">
-               <i class="material-icons icon">arrow_drop_down</i>
+        <h1 class="title">Todo-List Gits</h1>
+        <div class="form-group">
+            <div class="input-field">
+                <input type="text" class="form-control" name="todo" id="todo" v-model="todo" @keyup.enter="postTodo">
+                <label class="active" for="todo">Todo...</label>
             </div>
-         </li>
-         <!-- <li class="active">
-            <div class="location-name">
-               <span>place name</span>
-               <i class="material-icons white-text">arrow_drop_down</i>
-            </div>
-            <div class="landmark">
-               <span>place name</span>
-               <span>place name</span>
-               <span>place name</span>
-            </div>
-         </li> -->
-      </ul>
-   </aside>
+            <button class="btn btn-primary" @click="postTodo" style="margin-top: 8px;">Add
 
-   <div id="mapid"></div>
+                <i class="material-icons left">add</i>
+            </button>
+        </div>
+        <div class="progress" v-if='isLoading'>
+            <div class="indeterminate" style="width: 70%"></div>
+        </div>
 
-   <section class="detail hide" id="detail">
-      <img src="https://cdn2.tstatic.net/tribunnews/foto/bank/images/stopover-222.jpg" alt="">
-      <h6 id="detail-place-name">Singapore</h6>
-      <div id="detail-place-desc" class="desc">
-         <p >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id et excepturi tempora consectetur
-            perspiciatis,
-            recusandae voluptate quaerat. Deserunt alias odit nesciunt culpa. Voluptatibus, iste. Labore odio ratione
-            earum amet sapiente!</p>
-         <p><i class="material-icons light-blue-text">location_on</i> jl jambu</p>
-         <p><i class="material-icons green-text">link</i> www.aul.com</p>
-      </div>
-   </section>
+        <ul class="list-todo collection" v-if="todos.length > 0">
+            <li class="collection-item" v-for="(todo, index) in todos" :key="index">
+                <span>{{index + 1}}</span>
+                <span>
+                    <button class="waves-effect waves-light btn " @click="completedTodo(todo)" v-if='todo.completed'>
+                        <i class="material-icons left">check_box_outline_blank</i>
+                        <span>Completed</span>
+                    </button>
+                    <button class="waves-effect waves-light btn yellow darken-3 text-darken-2W" @click="completedTodo(todo)"
+                        v-if='!todo.completed'>
+                        <i class="material-icons left">check_box</i>
+                        <span>On Progress</span>
+                </button>
+                </span>
+                <span>{{todo.title}}</span>
+                <span>
+                    <button class="waves-effect waves-light btn red" @click="deleteTodo(todo.id)">
+                        <i class="material-icons">delete</i>
+                        Delete</button>
+                </span>
+            </li>
+        </ul>
+        <h1 v-else>Todonya kosong mas</h1>
 
+    </div>
 
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vuex@3.1.2/dist/vuex.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/index.js"></script>
 
-   <script type="text/javascript" src="materialize/js/bin/materialize.min.js"></script>
-   <script type="text/javascript" src="js/index.js"></script>
+    <!-- <script type="text/javascript" src="materialize/js/bin/materialize.min.js"></script>
+   <script type="text/javascript" src="js/index.js"></script> -->
 </body>
-
-
 
 </html>

@@ -1,15 +1,32 @@
+// for axios option to feth data from jsonholder
 const header = {
   headers: {
     "Content-type": "application/json; charset=UTF-8"
   }
 }
 
+var store = new Vuex.Store({
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment: function (state) {
+      state.count++
+    }
+  },
+  getters: {
+    counter: function (state) {
+      return state.count
+    }
+  }
+})
+
 
 var app = new Vue({
   el: '#app',
   data() {
     return {
-      todos: [],
+      // todos: [],
       todo: '',
       isLoading: false,
     }

@@ -59,15 +59,19 @@ $font-color-active: #7db62c;
       }
 
       .btn {
+         max-width: 2rem;
+         transition: max-width .5s;
+
          span {
             width: 0px;
             display: inline-block;
             transform: scale(0);
             transition: all .5s !important;
          }
-         
+
          &:hover {
-            span{
+            max-width: 10rem;
+            span {
                width: auto;
                transform: scale(1);
                transition: all .5s !important;

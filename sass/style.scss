@@ -36,6 +36,7 @@ $font-color-active: #7db62c;
 
    .collection-item {
       display: flex;
+      flex-wrap: wrap;
       align-content: center;
       align-items: baseline;
 
@@ -57,27 +58,70 @@ $font-color-active: #7db62c;
       &>span:nth-child(4) {
          flex: 0 1 3rem;
       }
+      &.active>div{
+         width: 70%;
+      }
 
-      .btn {
-         max-width: 2rem;
-         transition: max-width .5s;
-
+      .btn.complete {
+         i{
+            margin: 0;
+         }
+         max-width: 3rem;
+         transition: all .5s linear;
          span {
             width: 0px;
             display: inline-block;
-            transform: scale(0);
-            transition: all .5s !important;
+            transform: translateX(5rem);
+            opacity: 0;
+            transition: all .5s linear;
          }
-
+         
          &:hover {
-            max-width: 10rem;
-            span {
+            max-width: 30rem;
+            transition: all .5s linear;
+            span{
                width: auto;
-               transform: scale(1);
-               transition: all .5s !important;
+               transform: translateX(0);
+               opacity: 1;
+               transition: all .5s linear;
             }
          }
       }
    }
-
 }
+
+.loader-list{
+   position: absolute;
+   z-index: 10;
+   height: 100%;
+   width: 100%;
+   background-color: rgba($color: #111, $alpha: 0.3);
+}
+
+.lds-dual-ring {
+   display: inline-block;
+   position: absolute;
+   top: 10%;
+   left: calc( 50% - 120px );
+   width: 240px;
+   height: 240px;
+ }
+ .lds-dual-ring:after {
+   content: " ";
+   display: block;
+   width: 240px;
+   height: 240px;
+   margin: 8px;
+   border-radius: 50%;
+   border: 24px solid teal;
+   border-color: teal transparent teal transparent;
+   animation: lds-dual-ring 1.2s linear infinite;
+ }
+ @keyframes lds-dual-ring {
+   0% {
+     transform: rotate(0deg);
+   }
+   100% {
+     transform: rotate(360deg);
+   }
+ }

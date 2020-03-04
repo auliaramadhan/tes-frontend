@@ -19,13 +19,13 @@
 
     <div id="app" class="container">
 
-        <h1 class="title">Todo-List Gits</h1>
+        <h1 class="title">Todo-List Test</h1>
         <div class="form-group">
             <div class="input-field">
-                <input type="text" class="form-control" name="todo" id="todo" v-model="todo" @keyup.enter="postTodo">
+                <input type="text" class="form-control" name="todo" id="todo" v-model="todo" @keyup.enter="postTodo()">
                 <label class="active" for="todo">Todo...</label>
             </div>
-            <button class="btn btn-primary" @click="postTodo" style="margin-top: 8px;">Add
+            <button class="btn btn-primary" @click="postTodo()" style="margin-top: 8px;">Add
 
                 <i class="material-icons left">add</i>
             </button>
@@ -35,28 +35,34 @@
         </div>
 
         <ul class="list-todo collection" v-if="todos.length > 0">
+        <!-- Loader aja -->
+            <div class="loader-list" v-if='isLoading' >
+                <div class="lds-dual-ring"></div>
+            </div>
+
+            <!-- loop data -->
             <li class="collection-item" v-for="(todo, index) in todos" :key="index">
                 <span>{{index + 1}}</span>
                 <span>
-                    <button class="waves-effect waves-light btn " @click="completedTodo(todo)" v-if='todo.completed'>
+                    <button class="waves-effect waves-light btn complete " @click="completedTodo(todo)"
+                        v-if='todo.completed'>
                         <i class="material-icons left">check_box_outline_blank</i>
+                        <span>On Progress</span>
+                    </button>
+                    <button class="waves-effect waves-light btn complete yellow darken-3 text-darken-2W"
+                        @click="completedTodo(todo)" v-if='!todo.completed'>
+                        <i class="material-icons left">check_box</i>
                         <span>Completed</span>
                     </button>
-                    <button class="waves-effect waves-light btn yellow darken-3 text-darken-2W" @click="completedTodo(todo)"
-                        v-if='!todo.completed'>
-                        <i class="material-icons left">check_box</i>
-                        <span>On Progress</span>
-                </button>
                 </span>
                 <span>{{todo.title}}</span>
-                <span>
-                    <button class="waves-effect waves-light btn red" @click="deleteTodo(todo.id)">
-                        <i class="material-icons">delete</i>
-                        Delete</button>
+                <span @click="deleteTodo(todo.id,$event)">
+                    <button class="waves-effect waves-light btn red">
+                        <i class="material-icons">delete</i></button>
                 </span>
             </li>
         </ul>
-        <h1 v-else>Todonya kosong mas</h1>
+        <h1 v-else>Nothing to do</h1>
 
     </div>
 

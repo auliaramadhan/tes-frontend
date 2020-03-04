@@ -27,6 +27,7 @@ var store = new Vuex.Store({
       state.todos = state.todos.filter(i =>  i.id !== todo)
     },
     completedTodo: function (state, todo) {
+      console.log(todo)
       const index = state.todos.findIndex(e => e.id === todo.id)
       state.todos[index].completed = !state.todos[index].completed
     },
@@ -53,8 +54,8 @@ var store = new Vuex.Store({
           commit('removeTodo', id)
         }).catch(logError)
     },
-    async patchTodo({ commit }, id) {
-      await axios.patch('https://jsonplaceholder.typicode.com/todos/' + id, { completed: true }, header)
+    async patchTodo({ commit }, todo) {
+      await axios.patch('https://jsonplaceholder.typicode.com/todos/' + todo.id, todo, header)
         .then(response => commit('completedTodo', response.data))
         .catch(logError)
     },
@@ -101,7 +102,7 @@ var app = new Vue({
     },
     async completedTodo(todo) {
       this.isLoading = true;
-      await store.dispatch('patchTodo', todo.id)
+      await store.dispatch('patchTodo', todo)
       this.isLoading = false;
     },
     async deleteTodo(id) {
